@@ -50,6 +50,20 @@ type action struct {
 	name string
 }
 
+type tile struct {
+	cards *card
+	res *resource //	
+	//tileType {"city", "green", "ocean", "empty"}
+	//owner?
+
+	l_top *tile
+	l_mid *tile
+	l_low *tile
+	r_top *tile
+	r_mid *tile
+	r_low *tile
+}
+
 func (p *player) Init() {
 	(*p).res.Init()
 	p.cards = nil
@@ -95,9 +109,9 @@ func (p *player) print() {
 }
 
 func (r *resource) print() {
-	fmt.Printf("tf:%2d	mc:%2d 	plant:%2d	steel:%3d 	ti:%3d 	en:%2d	heat:%3d\n",
+	fmt.Printf("tf:%2d    mc: %2d    plant: %2d    steel: %2d    ti: %2d    en: %2d    heat: %2d\n",
 		r.terraforming, r.mc, r.plant, r.steel, r.titanium, r.energy, r.heat)
-	fmt.Printf("vp:%2d 	mcP:%2d plantP:%2d	steelP:%2d	tiP:%2d enP:%2d	heatP:%2d\n",
+	fmt.Printf("vp:%2d    mcP:%2d    plantP:%2d    steelP:%2d    tiP:%2d    enP:%2d    heatP:%2d\n",
 		r.victoryPoint, r.mcProd, r.plantProd, r.steelProd, r.titaniumProd, r.energyProd, r.heatProd)
 }
 
@@ -133,6 +147,14 @@ func (m *mars) isTerraform() bool {
 	}
 }
 
+// base 5, 6, 7, 8, 9 middle
+// height 9
+func createBoard() {
+
+}
+
+// 17  corporation cards
+// 208 Project Cards
 func main() {
 	fmt.Printf("Hello Mars\n")
 
